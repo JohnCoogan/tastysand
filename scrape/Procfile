@@ -1,0 +1,1 @@
+worker: python stream.py -o oauth.json -d db.json -t terms.txt
