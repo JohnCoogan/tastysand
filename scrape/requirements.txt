@@ -1,0 +1,2 @@
+pymongo==2.3
+tweepy==1.12
