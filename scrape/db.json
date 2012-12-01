@@ -1,4 +1,4 @@
 {
-	"server" : "",
-	"database" : ""
+	"server" : "mongodb://tastysand:tastysand@ds043917.mongolab.com:43917/tastysand",
+	"database" : "tastysand"
 }
