@@ -1,6 +1,6 @@
 {
-	"consumer_key" : "YrSBOPlkNpwMQytkic4w",
-	"consumer_secret" : "nG6aBNXmEi0K5KejqNXTVdpjFPRp6fqCc9SgopNAXA",
-	"access_token" : "981460045-OV7t0d7joCaK7icS6YlpAHpDQu1ENnZglA7QxPyI",
-	"access_token_secret" : "EcgyLuuaMZBT7pIF6135vb0wERZOji62pZn6xHr40"
+	"consumer_key" : "CONSUMER KEY HERE",
+	"consumer_secret" : "CONSUMER SECRET HERE",
+	"access_token" : "ACCESS TOKEN HERE",
+	"access_token_secret" : "ACCESS TOKEN SECRET HERE"
 }

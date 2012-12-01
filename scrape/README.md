@@ -13,5 +13,11 @@ The script takes a list of terms and runs forever. Terms can be updated on the f
 *	**db.json** contains DB connection info.
 *	**terms.txt** contains a list of search terms (one per line).
 
-Dependencies are listed in requirments.txt
-Procfile allows you to easily deploy as a worker to Heroku.
+## Deployment
+Running on a server is usually best so the process can stay up for a sizable amount of time.
+Notes: Dependencies are listed in requirments.txt Procfile allows you to easily deploy as a worker to Heroku.
+
+*	`heroku create [name]`
+*	`git push heroku master`
+*	`heroku ps:scale worker=1`
+*	`heroku logs`
