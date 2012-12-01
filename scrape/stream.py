@@ -11,19 +11,17 @@ from tweepy.utils import import_simplejson
 
 json = import_simplejson()
 active_terms = {}
-# STREAM_URL = "https://stream.twitter.com/1/statuses/filter.json?track=%s"
 
 def get_parser():
     parser = OptionParser()
     parser.add_option("-d", "--dbfile", dest="dbfile", help="File with database options")
     parser.add_option("-o", "--oauth", dest="oauthfile", help="File with oauth options")
     parser.add_option("-t", "--terms", dest="termsfile", help="File with terms to search")
-    parser.usage = "bad parametres"
+    parser.usage = "Incomplete command"
     return parser
 
 def updateSearchQuery(options):
     print 'Updating terms: %s' % datetime.datetime.now()
-    
     query = ",".join(active_terms.keys())
     
     try:
@@ -47,16 +45,13 @@ def deleteTerm(term):
     active_terms.pop(term)
     
 def updateTerms(options):
-    
     fileterms = []
-    
     update = False
     f = file(options.termsfile,'r')
     for line in f.readlines():
         term = str.strip(line) 
-        
         fileterms.append(term)
-        #Check new terms
+        # Check new terms
         if not term in active_terms.keys():
             print "New Term: %s" % term
             addTerm(term)
