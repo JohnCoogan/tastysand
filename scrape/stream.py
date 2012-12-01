@@ -15,9 +15,9 @@ STREAM_URL = "https://stream.twitter.com/1/statuses/filter.json?track=%s"
 
 def get_parser():
     parser = OptionParser()
-    parser.add_option("-d", "--dbfile", dest="dbfile", help="file with database options")
-    parser.add_option("-o", "--oauth", dest="oauthfile", help="file with oauth options")
-    parser.add_option("-f", "--file", dest="file", help="terms file")
+    parser.add_option("-d", "--dbfile", dest="dbfile", help="File with database options")
+    parser.add_option("-o", "--oauth", dest="oauthfile", help="File with oauth options")
+    parser.add_option("-t", "--terms", dest="termsfile", help="File with terms to search")
     parser.usage = "bad parametres"
     return parser
 
@@ -53,7 +53,7 @@ def updateTerms(options):
     fileterms = []
     
     update = False
-    f = file(options.file,'r')
+    f = file(options.termsfile,'r')
     for line in f.readlines():
         term = str.strip(line) 
         
