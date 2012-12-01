@@ -11,7 +11,7 @@ from tweepy.utils import import_simplejson
 
 json = import_simplejson()
 active_terms = {}
-STREAM_URL = "https://stream.twitter.com/1/statuses/filter.json?track=%s"
+# STREAM_URL = "https://stream.twitter.com/1/statuses/filter.json?track=%s"
 
 def get_parser():
     parser = OptionParser()
@@ -35,7 +35,6 @@ def updateSearchQuery(options):
     streamThread.setDaemon(True)
     
     streamThread.start()
-    
 
 def addTerm(term):
     if term == '':
@@ -46,7 +45,6 @@ def deleteTerm(term):
     if term == '':
         return
     active_terms.pop(term)
-        
     
 def updateTerms(options):
     
@@ -120,8 +118,6 @@ class MongoDBCoordinator:
                 except Exception as (e):
                     print "Error %s" % e.message
 
-
-
 class MongoDBListener(StreamListener):
     # Listener handles tweets as they are recieved.
     def on_data(self, data):
@@ -160,7 +156,6 @@ class StreamConsumerThreadClass(threading.Thread):
     
         self.stream = Stream(auth, listener,timeout=60)  
         
-        
     def stopConsume(self):
         self.stream.disconnect()
       
@@ -173,20 +168,19 @@ class StreamConsumerThreadClass(threading.Thread):
             try: 
                 if not connected:
                     connected = True
-                    self.stream.userstream()
+                    self.stream.filter(track=[self.searchterm])
             except SSLError, e:
                 print e
                 connected = False            
-
 
 if __name__ == "__main__":
     parser = get_parser()
     (options, args) = parser.parse_args()
     print options, args
-    
+
     mongo = MongoDBCoordinator(options.dbfile)
     streamThread = StreamConsumerThreadClass('',options.oauthfile)
-    
+
     try:
         while True:
             updateTerms(options)
